@@ -2,7 +2,7 @@
 
 TinyLink is a lightweight URL shortener built with **Next.js**, **Prisma**, and **SQLite (local)**.  
 Users can create short links, view stats, delete links, and track click counts.  
-Designed according to the exact specifications outlined in the assignment.
+
 
 ---
 
