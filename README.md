@@ -1,4 +1,4 @@
-# TinyLink – URL Shortener (Take-Home Assignment)
+# TinyLink – URL Shortener 
 
 TinyLink is a lightweight URL shortener built with **Next.js**, **Prisma**, and **SQLite (local)**.  
 Users can create short links, view stats, delete links, and track click counts.  
