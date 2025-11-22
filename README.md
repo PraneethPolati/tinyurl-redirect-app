@@ -7,17 +7,18 @@ Users can create short links, view stats, delete links, and track click counts.
 **🚀 Features**                                                                 
 **🔗 Core Functionality**
 
-Create short URLs from long URLs
-Optional custom shortcode (6–8 alphanumeric characters)
-Check uniqueness of custom codes (returns 409 if exists)
-Redirect using /:code (HTTP 302)
-Increment click count on every visit
-Update lastClickedAt timestamp
-Delete links
-View stats for each link
+Create short URLs from long URLs  
+Optional custom shortcode (6–8 alphanumeric characters)  
+Check uniqueness of custom codes (returns 409 if exists)  
+Redirect using /:code (HTTP 302)  
+Increment click count on every visit  
+Update lastClickedAt timestamp  
+Delete links  
+View stats for each link  
+  
 
+**📊 Dashboard**    
 
-**📊 Dashboard**                                                                   
 Displays all links   
 Columns:  
 Short code   
@@ -31,7 +32,8 @@ Success + error states
 Responsive UI    
 
 
-**🩺 Healthcheck**   
+**🩺 Healthcheck**  
+
 Route:/healthz   
 Returns:   
 System status   
@@ -40,7 +42,8 @@ Uptime
 Timestamp   
 Version   
 
-**🛠️ Tech Stack   
+**🛠️ Tech Stack**   
+
 Next.js 16 (App Router)   
 TailwindCSS   
 Prisma ORM   
@@ -48,7 +51,8 @@ SQLite (local development)
 Neon Postgres (production)   
 Node.js runtime for Prisma**   
    
-**📁 Project Structure**   
+**📁 Project Structure** 
+
 app/   
  ├─ page.tsx                 → Dashboard  
  ├─ healthz/route.ts         → Healthcheck  
@@ -80,9 +84,11 @@ public/
 
 
 **Shortcode Rule**
+
 [A-Za-z0-9]{6,8}
   
-**🧪 Redirect Behavior**    
+**🧪 Redirect Behavior**   
+
 Route:  
 /:code  
   
@@ -94,6 +100,7 @@ Return 404 if deleted or not found
 
    
 **💾 Database Schema (Prisma)**   
+
 model Link {   
   id            String   @id @default(cuid())  
   code          String   @unique  
@@ -105,8 +112,9 @@ model Link {
 }   
   
 
-**📌 Environment Variables  
-Local development:**  
+**📌 Environment Variables**  
+
+**Local development:**  
 DATABASE_URL="file:./dev.db"   
 NEXT_PUBLIC_BASE_URL="http://localhost:3000"   
   
@@ -134,6 +142,7 @@ Health → http://localhost:3000/healthz
   
   
 **🩺 Sample Healthcheck Response**  
+
 {  
   "ok": true,  
   "version": "1.0",  
