@@ -5,6 +5,11 @@ export const revalidate = 0;
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+// ⛔ Ignore HEAD requests (Next.js prefetch)
+export async function HEAD() {
+  return NextResponse.json({}, { status: 200 });
+}
+
 export async function GET(
   _req: NextRequest,
   context: { params: Promise<{ code: string }> }
@@ -21,9 +26,13 @@ export async function GET(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
+  // Only GET increments clicks
   await prisma.link.update({
     where: { code },
-    data: { clicks: { increment: 1 }, lastClickedAt: new Date() },
+    data: {
+      clicks: { increment: 1 },
+      lastClickedAt: new Date(),
+    },
   });
 
   return NextResponse.redirect(link.targetUrl, 302);
